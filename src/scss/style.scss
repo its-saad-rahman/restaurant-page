@@ -1,0 +1,151 @@
+@use 'reset.scss';
+@use 'utilities/padding.scss';
+@use 'utilities/border-radius.scss';
+@use 'composition/grid';
+@use 'composition/flex';
+$clr-primary: hsl(356, 77%, 47%);
+$clr-secondary: hsl(0, 11%, 91%);
+$clr-black: hsl(0, 9%, 16%);
+
+/**********************
+      COMPOSITION
+ ************************/
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1em);
+}
+
+/**********************
+      UTILITY
+ ************************/
+.wrapper {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 90rem;
+}
+
+.bg-color {
+  background-color: $clr-secondary;
+}
+@font-face {
+  font-family: 'Poppins-Black';
+  src: url('../assets/fonts/Poppins-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'Poppins-Regular';
+  src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'FrancoisOne-Regular';
+  src: url('../assets/fonts/FrancoisOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+$poppins-black: 'Poppins-Black', sans-serif;
+$poppins-regular: 'Poppins-Regular', sans-serif;
+$francoisone-regular: 'FrancoisOne-Regular', sans-serif;
+
+/**********************
+      BLOCKS
+ ************************/
+
+/**********************
+      EXCEPTIONS
+ ************************/
+
+.logo {
+  font-family: $poppins-black;
+  font-size: 3.5rem;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  column-gap: 3em;
+  & li a {
+    font-size: 1.15rem;
+    color: $clr-black;
+    font-family: $poppins-regular;
+    transition: color 350ms ease-in-out;
+  }
+}
+
+nav ul li a.active {
+  color: $clr-primary;
+}
+nav ul li a:hover {
+  color: $clr-primary;
+}
+.btn {
+  font-family: $poppins-regular;
+  font-size: 1rem;
+}
+.nav-btn {
+  background-color: $clr-primary;
+  color: hsl(0, 0%, 100%);
+  padding: 0.5em 2em;
+  border-radius: 100px;
+  transition: background 350ms ease-in-out;
+  &:hover {
+    background-color: lighten($clr-primary, 20%);
+  }
+}
+// HERO section
+.hero {
+  height: 80vh;
+}
+
+.hero h1 {
+  font-family: $francoisone-regular;
+  font-weight: 900;
+  font-size: 5rem;
+  line-height: 1;
+  color: $clr-black;
+}
+
+.hero-btn {
+  color: $clr-primary;
+  background-color: white;
+  align-self: start;
+  cursor: pointer;
+  transition: background 350ms ease-in;
+  // transition: color 350ms ease-in;
+  box-shadow: 0px 0px 3px 3px rgb(0 0 0/10%);
+  &:hover {
+    background-color: $clr-primary;
+    color: white;
+    transition: background 350ms ease-out;
+    // transition: color 350ms ease-out;
+  }
+}
+
+.text-color-green {
+  color: hsl(120, 49%, 35%);
+}
+.text-color-primary {
+  color: hsl(356, 50%, 40%);
+}
+
+.menu {
+  --gutter: 1em;
+  margin-top: 3em;
+}
+article {
+  font-family: $poppins-regular;
+  padding: 1em;
+  background: white;
+  border-radius: 15px;
+  box-shadow: -2px 2px 0px 2px $clr-primary;
+
+  h3 {
+    color: $clr-black;
+  }
+}
+
+.contact {
+  --gutter: 2em;
+  align-content: center;
+  font-family: $francoisone-regular;
+  height: 80vh;
+}
