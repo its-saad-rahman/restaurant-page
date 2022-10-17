@@ -1,16 +1,33 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+  mode: 'development',
+  entry: {
+    index: path.resolve(__dirname, './src/index.js'),
   },
+  output: {
+    filename: '[name][contenthash].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+    assetModuleFilename: '[name][ext]',
+  },
+
+  devtool: 'source-map',
+  devServer: {
+    static: './dist',
+    port: 3000,
+    open: true,
+    hot: true,
+    compress: true,
+    historyApiFallback: true,
+  },
+
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -22,4 +39,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Restaurant App',
+      filename: 'index.html',
+      template: 'src/template.html',
+    }),
+  ],
 };
